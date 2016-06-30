@@ -12,7 +12,7 @@ NAME:
    var - tool to fill in json/yaml stdin stream from the environment variables
 
 USAGE:
-   var [-a <FROM>=<TO> [-a <FROM>=<TO>]]
+   var [-a <FROM>=<TO> [-a <FROM>=<TO>]] < conf.yaml > env-conf.yaml
 
    The tool reads stdin, lookups env variables, sets them up and
    produce the result to stdout.
