@@ -39,8 +39,6 @@ USAGE:
      rabbitmq.url -> RABBITMQ_URL
      proxies      -> PROXIES_0, PROXIES_1
 
-   var -a PORT=SYSTEM_PORT < ./config.yaml > env-config.yaml
-
 VERSION:
    0.1.0
 
