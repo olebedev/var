@@ -14,7 +14,7 @@ import (
 func main() {
 	app := cli.NewApp()
 	app.Usage = "tool to fill in json/yaml stdin stream from the environment variables"
-	app.UsageText = `var [-a <FROM>=<TO> [-a <FROM>=<TO>]]
+	app.UsageText = `var [-a <FROM>=<TO> [-a <FROM>=<TO>]] < conf.yaml > env-conf.yaml
 
 	 The tool reads stdin, lookups env variables, sets them up and
 	 produce the result to stdout.
@@ -40,8 +40,6 @@ func main() {
 	   port         -> PORT
 	   rabbitmq.url -> RABBITMQ_URL
 	   proxies      -> PROXIES_0, PROXIES_1
-
-	 var -a PORT=SYSTEM_PORT < ./config.yaml > env-config.yaml
 	 `
 	app.Author = "olebedev <ole6edev@gmail.com>"
 	app.Version = "0.1.0"
