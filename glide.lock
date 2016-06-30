@@ -1,0 +1,10 @@
+hash: 9db827a99bcb80ac711fa573050e0bba46cd2a71b43d98506dba873a87fb053c
+updated: 2016-06-30T21:56:23.869036237+05:00
+imports:
+- name: github.com/codegangsta/cli
+  version: 1efa31f08b9333f1bd4882d61f9d668a70cd902e
+- name: github.com/olebedev/config
+  version: dd1049a3738432dfc49417e2ae5bd97e132ecac6
+- name: gopkg.in/yaml.v2
+  version: a83829b6f1293c91addabc89d0571c246397bbf4
+testImports: []

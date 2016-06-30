@@ -1,0 +1,5 @@
+package: github.com/olebedev/var
+import:
+- package: github.com/olebedev/config
+- package: github.com/codegangsta/cli
+  version: ~1.18.0
