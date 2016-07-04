@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"bytes"
+	"encoding/json"
 	"io/ioutil"
 	"os"
 	"strings"
@@ -24,16 +25,16 @@ func main() {
 	 to underscore("_") to lookup the env.
    For example, env lookup for this input:
 
-	 {
-	   "port": 5000,
-		 "rabbitmq": {
-			 "url": "..."
-		 },
-		 "proxies": [
-				"...",
-				"..."
-		 ]
-	 }
+	   {
+	     "port": 5000,
+		   "rabbitmq": {
+			   "url": "..."
+		   },
+		   "proxies": [
+			  	"...",
+				  "..."
+		   ]
+	   }
 
 	 will be:
 
@@ -42,11 +43,15 @@ func main() {
 	   proxies      -> PROXIES_0, PROXIES_1
 	 `
 	app.Author = "olebedev <ole6edev@gmail.com>"
-	app.Version = "0.1.0"
+	app.Version = "0.1.1"
 	app.Flags = []cli.Flag{
 		cli.StringSliceFlag{
 			Name:  "alias,a",
 			Usage: "alias to be matched: <FROM>=<TO>",
+		},
+		cli.StringFlag{
+			Name:  "indent,i",
+			Usage: "indent string(only for json files)",
 		},
 	}
 	app.Action = act
@@ -87,6 +92,12 @@ func act(ctx *cli.Context) error {
 		j, err = config.RenderJson(c.Root)
 		if err != nil {
 			return err
+		}
+
+		if ctx.String("indent") != "" {
+			var out bytes.Buffer
+			json.Indent(&out, []byte(j), "", ctx.String("indent"))
+			j = out.String()
 		}
 	}
 	bytes.NewBuffer([]byte(j)).WriteTo(os.Stdout)
